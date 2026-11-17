@@ -1,0 +1,11 @@
+# Build output
+build/
+dist/
+DerivedData/
+*.xcuserstate
+xcuserdata/
+.DS_Store
+
+# Internal planning notes (not part of the public project)
+SPEC.md
+PROGRESS.md

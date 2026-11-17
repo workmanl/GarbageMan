@@ -1,0 +1,593 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		02F18CF29D950E5946B10FE8 /* FolderSizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5651531F4DC801EFE44485C7 /* FolderSizer.swift */; };
+		03F50DABFC5A5157469DA093 /* QuickCleanModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95A88776C48242C6C957188 /* QuickCleanModel.swift */; };
+		0C33FDF20D5DB2F5EBFD5647 /* DiskInspectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF252B4B1C13EE80A739EB8 /* DiskInspectorView.swift */; };
+		0CF39A0B0D537C4A5396F459 /* TrashEmptierTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E6F38931D53395965C9870 /* TrashEmptierTests.swift */; };
+		0D4231A86E1A035732E49049 /* TrashEmptier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B988D456A01314154671B0F /* TrashEmptier.swift */; };
+		0E745B575EC5DD142F30AA23 /* InspectorCacheTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA6E4742C3FB9686B72C8BB /* InspectorCacheTests.swift */; };
+		11D49F4259DAE5C0CC44281A /* GarbageManApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B425E0E0574F66806F52DD1 /* GarbageManApp.swift */; };
+		188AE8EC6044E15EBC05B0A6 /* UninstallerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6715D9ADFC1B735CCA529DD0 /* UninstallerModel.swift */; };
+		1C07876E7129B1FA0CBFB37A /* LeftoverFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 640EDBE366C3FE58DD29107F /* LeftoverFinder.swift */; };
+		2B3DDD127168F2F387488F5D /* InspectorCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD90EBE839990425AA249FE4 /* InspectorCache.swift */; };
+		2CB8B72E3BC9C84961879DE1 /* DiskInspectorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 776141B122A6FF8E105EBA30 /* DiskInspectorModel.swift */; };
+		31F2EEE7CB6444FC68B484E2 /* CacheScannerErrorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889CE31A6E585EE92B28A78E /* CacheScannerErrorTests.swift */; };
+		3E593C028F1E5A389A1CAC08 /* AboutWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF81E2F0CA1CE188C26E1D5C /* AboutWindow.swift */; };
+		43BEBE43DA4D2667E50D0EE0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2053139C6F466CEED217D3A4 /* AppDelegate.swift */; };
+		4867CCD00B67491D62D631DA /* TempFolderFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1294F0EBAE683CC538CFB5 /* TempFolderFinder.swift */; };
+		4A0E0C7B64261A8BE0AEEBDB /* CacheScannerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D37E6F16E95DB71F69078B0 /* CacheScannerTests.swift */; };
+		516C131830A01D82E3C409D4 /* SimulatorCleanerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05306F53205EFF78C8CD0F0F /* SimulatorCleanerTests.swift */; };
+		59A720AD91A051CDDB5365F8 /* QuickCleanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E04BAAD9244C0038B3F758B7 /* QuickCleanView.swift */; };
+		5BC2CC89B0B9FDFEB5BCDBDD /* UninstallerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96BE29E01D6490F635BB9292 /* UninstallerView.swift */; };
+		6235D2282B458C25F663EBEE /* TempFolderFinderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D334BE7F4648A3DD80A9DC6 /* TempFolderFinderTests.swift */; };
+		669D597A8D7371C032ACB1C2 /* UninstallerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6715D9ADFC1B735CCA529DD0 /* UninstallerModel.swift */; };
+		6DAD8024F6D52C6C8F789D2A /* CleanCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40FF27E11CC4132FC0B0FC5B /* CleanCategory.swift */; };
+		769BB5826317E97D0E6010CD /* Cleaner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57AA99A8D22AD5B1019971D9 /* Cleaner.swift */; };
+		7A9A6AE646D65FB18161E7FF /* AppBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C70CBE8C20E65CD301AFE43 /* AppBundle.swift */; };
+		7D6E694A3246F1DD8054AB1A /* LeftoverFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 640EDBE366C3FE58DD29107F /* LeftoverFinder.swift */; };
+		7D7C1A5EFCADA12AD67BFFAC /* SystemMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EADCB87392454A9DBEE2C30 /* SystemMonitor.swift */; };
+		81DFCA0E2355CEB55B37DA07 /* SimulatorCleaner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001EE9807A7C47C57E053E34 /* SimulatorCleaner.swift */; };
+		8A32872412FB803A27794A12 /* DiskInspectorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 776141B122A6FF8E105EBA30 /* DiskInspectorModel.swift */; };
+		9D8A19F2212C978148D0D578 /* QuickCleanModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95A88776C48242C6C957188 /* QuickCleanModel.swift */; };
+		9E2F97EF5DA37FCBFA744939 /* AppBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C70CBE8C20E65CD301AFE43 /* AppBundle.swift */; };
+		9E8BCE175C33ABF10004AC70 /* TempFolderFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1294F0EBAE683CC538CFB5 /* TempFolderFinder.swift */; };
+		A00172A484E794DE87612B8C /* DiskInspectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF252B4B1C13EE80A739EB8 /* DiskInspectorView.swift */; };
+		AD08CBC77F7E94D433DFB447 /* TrashEmptier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B988D456A01314154671B0F /* TrashEmptier.swift */; };
+		B3561F013FDA8B7E7EA3F9A6 /* CacheScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D82DA85F8E0A84771CE358D /* CacheScanner.swift */; };
+		B3F8E0ECE3FBB186BE30CB20 /* CleanerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF58634BA2751DF5C8834B9A /* CleanerTests.swift */; };
+		B86FB23F8B100BA139ADA220 /* QuickCleanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E04BAAD9244C0038B3F758B7 /* QuickCleanView.swift */; };
+		BDD649CBEDBEFF074AA97908 /* FolderSizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5651531F4DC801EFE44485C7 /* FolderSizer.swift */; };
+		D029118F929A0CB0E2DE6B45 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F836C8F6C25FAC34DFD6EEF /* Assets.xcassets */; };
+		D5812438C502B49B0B061B88 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6CE64A682205EBE64126C6 /* AboutView.swift */; };
+		D92387CBC864D18D2B3BE95A /* Cleaner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57AA99A8D22AD5B1019971D9 /* Cleaner.swift */; };
+		E0D09FF695DAAD8BA6232634 /* CacheScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D82DA85F8E0A84771CE358D /* CacheScanner.swift */; };
+		E366FA9788C9C7CA4665064A /* MenuBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60CB7EF4635EFB4D6A348521 /* MenuBarController.swift */; };
+		E941248F66840C228F7B5031 /* InspectorCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD90EBE839990425AA249FE4 /* InspectorCache.swift */; };
+		EDA93793ED18F67176606328 /* UninstallerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96BE29E01D6490F635BB9292 /* UninstallerView.swift */; };
+		F10E5726E418C0174D726134 /* CleanCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40FF27E11CC4132FC0B0FC5B /* CleanCategory.swift */; };
+		F23CDBF9FFFDFC0C897CFB51 /* LeftoverFinderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E60A16EC97C132DF392000 /* LeftoverFinderTests.swift */; };
+		F62DE83A7066E65122EA11C2 /* SimulatorCleaner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001EE9807A7C47C57E053E34 /* SimulatorCleaner.swift */; };
+		F761670AB4BE79928BB3CE8D /* FolderSizerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 281C74A9826B9A4E3D015AFE /* FolderSizerTests.swift */; };
+		FA9326DB374D2A000A48BBB1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C2DC1624FC29CB49F1A4947 /* ContentView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		001EE9807A7C47C57E053E34 /* SimulatorCleaner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulatorCleaner.swift; sourceTree = "<group>"; };
+		05306F53205EFF78C8CD0F0F /* SimulatorCleanerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulatorCleanerTests.swift; sourceTree = "<group>"; };
+		2053139C6F466CEED217D3A4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		281C74A9826B9A4E3D015AFE /* FolderSizerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderSizerTests.swift; sourceTree = "<group>"; };
+		2B988D456A01314154671B0F /* TrashEmptier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrashEmptier.swift; sourceTree = "<group>"; };
+		40FF27E11CC4132FC0B0FC5B /* CleanCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CleanCategory.swift; sourceTree = "<group>"; };
+		41E60A16EC97C132DF392000 /* LeftoverFinderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftoverFinderTests.swift; sourceTree = "<group>"; };
+		4A3C691310ED09A685864879 /* GarbageMan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GarbageMan.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4D334BE7F4648A3DD80A9DC6 /* TempFolderFinderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempFolderFinderTests.swift; sourceTree = "<group>"; };
+		4D37E6F16E95DB71F69078B0 /* CacheScannerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheScannerTests.swift; sourceTree = "<group>"; };
+		4F836C8F6C25FAC34DFD6EEF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5651531F4DC801EFE44485C7 /* FolderSizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderSizer.swift; sourceTree = "<group>"; };
+		57AA99A8D22AD5B1019971D9 /* Cleaner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cleaner.swift; sourceTree = "<group>"; };
+		5BF252B4B1C13EE80A739EB8 /* DiskInspectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiskInspectorView.swift; sourceTree = "<group>"; };
+		5EADCB87392454A9DBEE2C30 /* SystemMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemMonitor.swift; sourceTree = "<group>"; };
+		60CB7EF4635EFB4D6A348521 /* MenuBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarController.swift; sourceTree = "<group>"; };
+		640EDBE366C3FE58DD29107F /* LeftoverFinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftoverFinder.swift; sourceTree = "<group>"; };
+		6715D9ADFC1B735CCA529DD0 /* UninstallerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UninstallerModel.swift; sourceTree = "<group>"; };
+		776141B122A6FF8E105EBA30 /* DiskInspectorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiskInspectorModel.swift; sourceTree = "<group>"; };
+		7C70CBE8C20E65CD301AFE43 /* AppBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppBundle.swift; sourceTree = "<group>"; };
+		82E6F38931D53395965C9870 /* TrashEmptierTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrashEmptierTests.swift; sourceTree = "<group>"; };
+		889CE31A6E585EE92B28A78E /* CacheScannerErrorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheScannerErrorTests.swift; sourceTree = "<group>"; };
+		8B425E0E0574F66806F52DD1 /* GarbageManApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarbageManApp.swift; sourceTree = "<group>"; };
+		8C2DC1624FC29CB49F1A4947 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		96BE29E01D6490F635BB9292 /* UninstallerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UninstallerView.swift; sourceTree = "<group>"; };
+		9D82DA85F8E0A84771CE358D /* CacheScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheScanner.swift; sourceTree = "<group>"; };
+		BAA6E4742C3FB9686B72C8BB /* InspectorCacheTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectorCacheTests.swift; sourceTree = "<group>"; };
+		BF58634BA2751DF5C8834B9A /* CleanerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CleanerTests.swift; sourceTree = "<group>"; };
+		CC1294F0EBAE683CC538CFB5 /* TempFolderFinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempFolderFinder.swift; sourceTree = "<group>"; };
+		CF6CE64A682205EBE64126C6 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
+		D95A88776C48242C6C957188 /* QuickCleanModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickCleanModel.swift; sourceTree = "<group>"; };
+		E04BAAD9244C0038B3F758B7 /* QuickCleanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickCleanView.swift; sourceTree = "<group>"; };
+		E6A4BBA7A0660CFCC30290A7 /* GarbageManTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GarbageManTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EF81E2F0CA1CE188C26E1D5C /* AboutWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutWindow.swift; sourceTree = "<group>"; };
+		FD90EBE839990425AA249FE4 /* InspectorCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectorCache.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		063647D200BF05EFE339AB6B /* GarbageMan */ = {
+			isa = PBXGroup;
+			children = (
+				2053139C6F466CEED217D3A4 /* AppDelegate.swift */,
+				4F836C8F6C25FAC34DFD6EEF /* Assets.xcassets */,
+				8C2DC1624FC29CB49F1A4947 /* ContentView.swift */,
+				8B425E0E0574F66806F52DD1 /* GarbageManApp.swift */,
+				60CB7EF4635EFB4D6A348521 /* MenuBarController.swift */,
+				31DBE32770E3C83781C42338 /* Branding */,
+				BD434386CE106079D4DBECE3 /* DiskInspector */,
+				69F8D8F7EBDCEDFC308751BE /* MenuBar */,
+				1FE6C356F4C34453E2C8727A /* QuickClean */,
+				6C753BB8501F551FE24432DB /* Uninstaller */,
+			);
+			path = GarbageMan;
+			sourceTree = "<group>";
+		};
+		1FE6C356F4C34453E2C8727A /* QuickClean */ = {
+			isa = PBXGroup;
+			children = (
+				9D82DA85F8E0A84771CE358D /* CacheScanner.swift */,
+				40FF27E11CC4132FC0B0FC5B /* CleanCategory.swift */,
+				57AA99A8D22AD5B1019971D9 /* Cleaner.swift */,
+				D95A88776C48242C6C957188 /* QuickCleanModel.swift */,
+				E04BAAD9244C0038B3F758B7 /* QuickCleanView.swift */,
+				001EE9807A7C47C57E053E34 /* SimulatorCleaner.swift */,
+				CC1294F0EBAE683CC538CFB5 /* TempFolderFinder.swift */,
+				2B988D456A01314154671B0F /* TrashEmptier.swift */,
+			);
+			path = QuickClean;
+			sourceTree = "<group>";
+		};
+		31DBE32770E3C83781C42338 /* Branding */ = {
+			isa = PBXGroup;
+			children = (
+				CF6CE64A682205EBE64126C6 /* AboutView.swift */,
+				EF81E2F0CA1CE188C26E1D5C /* AboutWindow.swift */,
+			);
+			path = Branding;
+			sourceTree = "<group>";
+		};
+		5688032E5804C97A54228D17 /* GarbageManTests */ = {
+			isa = PBXGroup;
+			children = (
+				889CE31A6E585EE92B28A78E /* CacheScannerErrorTests.swift */,
+				4D37E6F16E95DB71F69078B0 /* CacheScannerTests.swift */,
+				BF58634BA2751DF5C8834B9A /* CleanerTests.swift */,
+				281C74A9826B9A4E3D015AFE /* FolderSizerTests.swift */,
+				BAA6E4742C3FB9686B72C8BB /* InspectorCacheTests.swift */,
+				41E60A16EC97C132DF392000 /* LeftoverFinderTests.swift */,
+				05306F53205EFF78C8CD0F0F /* SimulatorCleanerTests.swift */,
+				4D334BE7F4648A3DD80A9DC6 /* TempFolderFinderTests.swift */,
+				82E6F38931D53395965C9870 /* TrashEmptierTests.swift */,
+			);
+			path = GarbageManTests;
+			sourceTree = "<group>";
+		};
+		69F8D8F7EBDCEDFC308751BE /* MenuBar */ = {
+			isa = PBXGroup;
+			children = (
+				5EADCB87392454A9DBEE2C30 /* SystemMonitor.swift */,
+			);
+			path = MenuBar;
+			sourceTree = "<group>";
+		};
+		6C753BB8501F551FE24432DB /* Uninstaller */ = {
+			isa = PBXGroup;
+			children = (
+				7C70CBE8C20E65CD301AFE43 /* AppBundle.swift */,
+				640EDBE366C3FE58DD29107F /* LeftoverFinder.swift */,
+				6715D9ADFC1B735CCA529DD0 /* UninstallerModel.swift */,
+				96BE29E01D6490F635BB9292 /* UninstallerView.swift */,
+			);
+			path = Uninstaller;
+			sourceTree = "<group>";
+		};
+		72E2857E4B03C70084C6750E = {
+			isa = PBXGroup;
+			children = (
+				063647D200BF05EFE339AB6B /* GarbageMan */,
+				5688032E5804C97A54228D17 /* GarbageManTests */,
+				B348C89A0D52F8474CC18BE8 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		B348C89A0D52F8474CC18BE8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4A3C691310ED09A685864879 /* GarbageMan.app */,
+				E6A4BBA7A0660CFCC30290A7 /* GarbageManTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BD434386CE106079D4DBECE3 /* DiskInspector */ = {
+			isa = PBXGroup;
+			children = (
+				776141B122A6FF8E105EBA30 /* DiskInspectorModel.swift */,
+				5BF252B4B1C13EE80A739EB8 /* DiskInspectorView.swift */,
+				5651531F4DC801EFE44485C7 /* FolderSizer.swift */,
+				FD90EBE839990425AA249FE4 /* InspectorCache.swift */,
+			);
+			path = DiskInspector;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		6F02C371BE3D7970380403A5 /* GarbageManTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EC271B11C897F6582B7C27CE /* Build configuration list for PBXNativeTarget "GarbageManTests" */;
+			buildPhases = (
+				3AC3B6489A5253723C6490E6 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = GarbageManTests;
+			packageProductDependencies = (
+			);
+			productName = GarbageManTests;
+			productReference = E6A4BBA7A0660CFCC30290A7 /* GarbageManTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		BC00DECAA4175432BBCDC751 /* GarbageMan */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B329C89C7FA5020F39EC2E04 /* Build configuration list for PBXNativeTarget "GarbageMan" */;
+			buildPhases = (
+				169286CC9E35C474B3DD3BB3 /* Sources */,
+				84B412B39568017AFBA8A5AB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = GarbageMan;
+			packageProductDependencies = (
+			);
+			productName = GarbageMan;
+			productReference = 4A3C691310ED09A685864879 /* GarbageMan.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		91341E1C3AC5435C166CB8A9 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					6F02C371BE3D7970380403A5 = {
+						DevelopmentTeam = "";
+						ProvisioningStyle = Automatic;
+					};
+					BC00DECAA4175432BBCDC751 = {
+						DevelopmentTeam = "";
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = ED279ED189FB4AABBF2742AA /* Build configuration list for PBXProject "GarbageMan" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 72E2857E4B03C70084C6750E;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = B348C89A0D52F8474CC18BE8 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BC00DECAA4175432BBCDC751 /* GarbageMan */,
+				6F02C371BE3D7970380403A5 /* GarbageManTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		84B412B39568017AFBA8A5AB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D029118F929A0CB0E2DE6B45 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		169286CC9E35C474B3DD3BB3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D5812438C502B49B0B061B88 /* AboutView.swift in Sources */,
+				3E593C028F1E5A389A1CAC08 /* AboutWindow.swift in Sources */,
+				9E2F97EF5DA37FCBFA744939 /* AppBundle.swift in Sources */,
+				43BEBE43DA4D2667E50D0EE0 /* AppDelegate.swift in Sources */,
+				E0D09FF695DAAD8BA6232634 /* CacheScanner.swift in Sources */,
+				6DAD8024F6D52C6C8F789D2A /* CleanCategory.swift in Sources */,
+				769BB5826317E97D0E6010CD /* Cleaner.swift in Sources */,
+				FA9326DB374D2A000A48BBB1 /* ContentView.swift in Sources */,
+				2CB8B72E3BC9C84961879DE1 /* DiskInspectorModel.swift in Sources */,
+				A00172A484E794DE87612B8C /* DiskInspectorView.swift in Sources */,
+				BDD649CBEDBEFF074AA97908 /* FolderSizer.swift in Sources */,
+				11D49F4259DAE5C0CC44281A /* GarbageManApp.swift in Sources */,
+				E941248F66840C228F7B5031 /* InspectorCache.swift in Sources */,
+				7D6E694A3246F1DD8054AB1A /* LeftoverFinder.swift in Sources */,
+				E366FA9788C9C7CA4665064A /* MenuBarController.swift in Sources */,
+				9D8A19F2212C978148D0D578 /* QuickCleanModel.swift in Sources */,
+				B86FB23F8B100BA139ADA220 /* QuickCleanView.swift in Sources */,
+				81DFCA0E2355CEB55B37DA07 /* SimulatorCleaner.swift in Sources */,
+				7D7C1A5EFCADA12AD67BFFAC /* SystemMonitor.swift in Sources */,
+				9E8BCE175C33ABF10004AC70 /* TempFolderFinder.swift in Sources */,
+				0D4231A86E1A035732E49049 /* TrashEmptier.swift in Sources */,
+				188AE8EC6044E15EBC05B0A6 /* UninstallerModel.swift in Sources */,
+				5BC2CC89B0B9FDFEB5BCDBDD /* UninstallerView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3AC3B6489A5253723C6490E6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7A9A6AE646D65FB18161E7FF /* AppBundle.swift in Sources */,
+				B3561F013FDA8B7E7EA3F9A6 /* CacheScanner.swift in Sources */,
+				31F2EEE7CB6444FC68B484E2 /* CacheScannerErrorTests.swift in Sources */,
+				4A0E0C7B64261A8BE0AEEBDB /* CacheScannerTests.swift in Sources */,
+				F10E5726E418C0174D726134 /* CleanCategory.swift in Sources */,
+				D92387CBC864D18D2B3BE95A /* Cleaner.swift in Sources */,
+				B3F8E0ECE3FBB186BE30CB20 /* CleanerTests.swift in Sources */,
+				8A32872412FB803A27794A12 /* DiskInspectorModel.swift in Sources */,
+				0C33FDF20D5DB2F5EBFD5647 /* DiskInspectorView.swift in Sources */,
+				02F18CF29D950E5946B10FE8 /* FolderSizer.swift in Sources */,
+				F761670AB4BE79928BB3CE8D /* FolderSizerTests.swift in Sources */,
+				2B3DDD127168F2F387488F5D /* InspectorCache.swift in Sources */,
+				0E745B575EC5DD142F30AA23 /* InspectorCacheTests.swift in Sources */,
+				1C07876E7129B1FA0CBFB37A /* LeftoverFinder.swift in Sources */,
+				F23CDBF9FFFDFC0C897CFB51 /* LeftoverFinderTests.swift in Sources */,
+				03F50DABFC5A5157469DA093 /* QuickCleanModel.swift in Sources */,
+				59A720AD91A051CDDB5365F8 /* QuickCleanView.swift in Sources */,
+				F62DE83A7066E65122EA11C2 /* SimulatorCleaner.swift in Sources */,
+				516C131830A01D82E3C409D4 /* SimulatorCleanerTests.swift in Sources */,
+				4867CCD00B67491D62D631DA /* TempFolderFinder.swift in Sources */,
+				6235D2282B458C25F663EBEE /* TempFolderFinderTests.swift in Sources */,
+				AD08CBC77F7E94D433DFB447 /* TrashEmptier.swift in Sources */,
+				0CF39A0B0D537C4A5396F459 /* TrashEmptierTests.swift in Sources */,
+				669D597A8D7371C032ACB1C2 /* UninstallerModel.swift in Sources */,
+				EDA93793ED18F67176606328 /* UninstallerView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		3A137BC41945E27C1D1B2245 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_ENTITLEMENTS = GarbageMan/GarbageMan.entitlements;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = "";
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = GarbageMan/Info.plist;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 0.1.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.emeraldlabs.GarbageMan;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.10;
+			};
+			name = Release;
+		};
+		8AACC63A48EEAE7C55A1BBE5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_NAME = GarbageManTests;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		9007C9BECAE77537A46C2750 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = GarbageMan/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_NAME = GarbageMan;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		B6F38CC4625862F86BCAB4D6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_ENTITLEMENTS = GarbageMan/GarbageMan.entitlements;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = GarbageMan/Info.plist;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 0.1.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.emeraldlabs.GarbageMan;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.10;
+			};
+			name = Debug;
+		};
+		BE8D021F038BA98C39D135AD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_NAME = GarbageManTests;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		FF7447FDDED6772BA6540B9D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = GarbageMan/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_NAME = GarbageMan;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B329C89C7FA5020F39EC2E04 /* Build configuration list for PBXNativeTarget "GarbageMan" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FF7447FDDED6772BA6540B9D /* Debug */,
+				9007C9BECAE77537A46C2750 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		EC271B11C897F6582B7C27CE /* Build configuration list for PBXNativeTarget "GarbageManTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BE8D021F038BA98C39D135AD /* Debug */,
+				8AACC63A48EEAE7C55A1BBE5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		ED279ED189FB4AABBF2742AA /* Build configuration list for PBXProject "GarbageMan" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B6F38CC4625862F86BCAB4D6 /* Debug */,
+				3A137BC41945E27C1D1B2245 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 91341E1C3AC5435C166CB8A9 /* Project object */;
+}

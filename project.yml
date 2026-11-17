@@ -1,0 +1,72 @@
+name: GarbageMan
+options:
+  bundleIdPrefix: com.emeraldlabs
+  deploymentTarget:
+    macOS: "14.0"
+  developmentLanguage: en
+  createIntermediateGroups: true
+settings:
+  base:
+    SWIFT_VERSION: "5.10"
+    MACOSX_DEPLOYMENT_TARGET: "14.0"
+    ENABLE_HARDENED_RUNTIME: YES
+    CODE_SIGN_STYLE: Automatic
+    DEVELOPMENT_TEAM: ""
+    CODE_SIGN_IDENTITY: "-"
+    MARKETING_VERSION: "0.1.0"
+    CURRENT_PROJECT_VERSION: "1"
+    GENERATE_INFOPLIST_FILE: NO
+    INFOPLIST_FILE: GarbageMan/Info.plist
+    CODE_SIGN_ENTITLEMENTS: GarbageMan/GarbageMan.entitlements
+    PRODUCT_BUNDLE_IDENTIFIER: com.emeraldlabs.GarbageMan
+targets:
+  GarbageMan:
+    type: application
+    platform: macOS
+    sources:
+      - path: GarbageMan
+        excludes:
+          - "Info.plist"
+          - "*.entitlements"
+    info:
+      path: GarbageMan/Info.plist
+      properties:
+        LSMinimumSystemVersion: "14.0"
+        NSHumanReadableCopyright: "Copyright © 2026 Emerald Labs. All rights reserved."
+        LSApplicationCategoryType: public.app-category.utilities
+        NSSupportsAutomaticTermination: true
+        NSSupportsSuddenTermination: true
+        NSPrincipalClass: NSApplication
+        CFBundleDisplayName: GarbageMan
+        CFBundleShortVersionString: "0.1.0"
+        CFBundleVersion: "1"
+    settings:
+      base:
+        PRODUCT_NAME: GarbageMan
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+  GarbageManTests:
+    type: bundle.unit-test
+    platform: macOS
+    sources:
+      - path: GarbageManTests
+      - path: GarbageMan/QuickClean
+      - path: GarbageMan/Uninstaller
+      - path: GarbageMan/DiskInspector
+    settings:
+      base:
+        PRODUCT_NAME: GarbageManTests
+        GENERATE_INFOPLIST_FILE: YES
+schemes:
+  GarbageMan:
+    build:
+      targets:
+        GarbageMan: all
+        GarbageManTests: [test]
+    run:
+      config: Debug
+    test:
+      config: Debug
+      targets:
+        - GarbageManTests
+    archive:
+      config: Release
