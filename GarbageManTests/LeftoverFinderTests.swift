@@ -81,6 +81,38 @@ final class LeftoverFinderTests: XCTestCase {
 
     // MARK: - helpers
 
+    // MARK: - Tightened matching (security review 2026-11-17)
+
+    func test_does_not_match_id_as_substring() {
+        // `com.example.app` must not claim `com.example.appstore` or a name that merely contains it.
+        XCTAssertFalse(LeftoverFinder.matches(name: "com.example.appstore", mode: .standard, bundle: bundleFixture()))
+        XCTAssertFalse(LeftoverFinder.matches(name: "backup-com.example.app-old", mode: .standard, bundle: bundleFixture()))
+    }
+
+    func test_matches_group_container_forms() {
+        XCTAssertTrue(LeftoverFinder.matches(name: "group.com.example.app", mode: .standard, bundle: bundleFixture()))
+        XCTAssertTrue(LeftoverFinder.matches(name: "ABCDE12345.com.example.app.shared", mode: .standard, bundle: bundleFixture()))
+        XCTAssertFalse(LeftoverFinder.matches(name: "AB.com.example.app", mode: .standard, bundle: bundleFixture()))
+    }
+
+    func test_refuses_apple_and_generic_bundle_ids() {
+        let safari = AppBundle(url: URL(fileURLWithPath: "/Applications/Safari.app"), bundleIdentifier: "com.apple.Safari", displayName: "Safari")
+        XCTAssertFalse(LeftoverFinder.matches(name: "com.apple.Safari", mode: .standard, bundle: safari))
+        XCTAssertFalse(LeftoverFinder.matches(name: "Safari", mode: .standard, bundle: safari))
+
+        let generic = AppBundle(url: URL(fileURLWithPath: "/Applications/X.app"), bundleIdentifier: "app", displayName: "Example")
+        XCTAssertFalse(LeftoverFinder.matches(name: "app", mode: .standard, bundle: generic))
+        XCTAssertFalse(LeftoverFinder.isMatchableBundleID("a.b"))
+        XCTAssertFalse(LeftoverFinder.isMatchableBundleID("com..example"))
+        XCTAssertTrue(LeftoverFinder.isMatchableBundleID("com.example.app"))
+    }
+
+    func test_short_display_names_are_not_matched() {
+        let tv = AppBundle(url: URL(fileURLWithPath: "/Applications/TV.app"), bundleIdentifier: "com.example.tvapp", displayName: "TV")
+        XCTAssertFalse(LeftoverFinder.matches(name: "TV", mode: .standard, bundle: tv))
+        XCTAssertTrue(LeftoverFinder.matches(name: "com.example.tvapp", mode: .standard, bundle: tv))
+    }
+
     private func bundleFixture() -> AppBundle {
         AppBundle(
             url: URL(fileURLWithPath: "/Applications/Example.app"),

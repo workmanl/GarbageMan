@@ -83,19 +83,39 @@ enum LeftoverFinder {
         }
     }
 
+    /// Bundle IDs we refuse to match at all: Apple's own apps (system files
+    /// share their prefixes) and IDs too short or generic to be safe.
+    static func isMatchableBundleID(_ id: String) -> Bool {
+        let lower = id.lowercased()
+        guard lower.count >= 8 else { return false }
+        let parts = lower.split(separator: ".", omittingEmptySubsequences: false)
+        guard parts.count >= 2, !parts.contains(where: \.isEmpty) else { return false }
+        if lower.hasPrefix("com.apple.") { return false }
+        return true
+    }
+
     /// Pure-function name matcher — extracted for unit testing.
+    /// Every rule is anchored (exact name, or the ID followed by "."), so an
+    /// app such as `com.foo.mail` never matches `com.foo.mailbox`.
     static func matches(name: String, mode: SearchRoot.MatchMode, bundle: AppBundle) -> Bool {
         let id = bundle.bundleIdentifier
+        guard isMatchableBundleID(id) else { return false }
         let lowerName = name.lowercased()
         let lowerID = id.lowercased()
 
         // Universal rules (apply in both modes):
         // 1. exact bundle ID match
         if lowerName == lowerID { return true }
-        // 2. bundle ID prefix followed by '.', e.g. `com.apple.Safari.helper`
+        // 2. bundle ID prefix followed by '.', e.g. `com.example.app.helper`
         if lowerName.hasPrefix(lowerID + ".") { return true }
-        // 3. Containers / Group Containers use bundle ID as-is or with team-ID prefix
-        if lowerName.contains(lowerID) { return true }
+        // 3. Group Containers: `group.<id>` or a team-ID prefix `<TEAMID>.<id>`
+        if lowerName == "group.\(lowerID)" || lowerName.hasPrefix("group.\(lowerID).") { return true }
+        if let dot = lowerName.firstIndex(of: ".") {
+            let prefix = lowerName[..<dot]
+            let rest = lowerName[lowerName.index(after: dot)...]
+            let isTeamID = (6...10).contains(prefix.count) && prefix.allSatisfy { $0.isLetter || $0.isNumber }
+            if isTeamID && (rest == lowerID || rest.hasPrefix(lowerID + ".")) { return true }
+        }
 
         if mode == .launchPlist {
             // LaunchAgents/LaunchDaemons plists are usually `<bundleid>.plist`
@@ -106,8 +126,9 @@ enum LeftoverFinder {
 
         // .standard mode also accepts an exact app-name match (case-insensitive)
         // — used by things like `~/Library/Caches/Slack` that don't use the bundle ID.
+        // Only for names long enough to be distinctive (no "app", "kit", "tv").
         let appBase = bundle.displayName.lowercased()
-        if !appBase.isEmpty {
+        if appBase.count >= 4 {
             if lowerName == appBase { return true }
             // Pref files such as `Slack.plist`
             if lowerName == "\(appBase).plist" { return true }
