@@ -25,7 +25,7 @@ final class LeftoverFinderTests: XCTestCase {
     }
 
     func test_matches_team_prefix_group_container() {
-        XCTAssertTrue(LeftoverFinder.matches(name: "ABCD12.com.example.app", mode: .standard, bundle: bundleFixture()))
+        XCTAssertTrue(LeftoverFinder.matches(name: "ABCDE12345.com.example.app", mode: .standard, bundle: bundleFixture()))
     }
 
     func test_matches_display_name_in_standard_mode() {
@@ -93,6 +93,9 @@ final class LeftoverFinderTests: XCTestCase {
         XCTAssertTrue(LeftoverFinder.matches(name: "group.com.example.app", mode: .standard, bundle: bundleFixture()))
         XCTAssertTrue(LeftoverFinder.matches(name: "ABCDE12345.com.example.app.shared", mode: .standard, bundle: bundleFixture()))
         XCTAssertFalse(LeftoverFinder.matches(name: "AB.com.example.app", mode: .standard, bundle: bundleFixture()))
+        // Team IDs are exactly 10 uppercase letters or digits.
+        XCTAssertFalse(LeftoverFinder.matches(name: "ABCD12.com.example.app", mode: .standard, bundle: bundleFixture()))
+        XCTAssertFalse(LeftoverFinder.matches(name: "abcde12345.com.example.app", mode: .standard, bundle: bundleFixture()))
     }
 
     func test_refuses_apple_and_generic_bundle_ids() {
@@ -105,6 +108,16 @@ final class LeftoverFinderTests: XCTestCase {
         XCTAssertFalse(LeftoverFinder.isMatchableBundleID("a.b"))
         XCTAssertFalse(LeftoverFinder.isMatchableBundleID("com..example"))
         XCTAssertTrue(LeftoverFinder.isMatchableBundleID("com.example.app"))
+        // A bare vendor prefix would sweep up every app from that vendor.
+        XCTAssertFalse(LeftoverFinder.isMatchableBundleID("com.vendor"))
+        XCTAssertFalse(LeftoverFinder.isMatchableBundleID("com.apple"))
+        XCTAssertFalse(LeftoverFinder.isMatchableBundleID("group.com.example.app"))
+        XCTAssertFalse(LeftoverFinder.isMatchableBundleID("ABCDE12345.com.example.app"))
+        XCTAssertFalse(LeftoverFinder.isMatchableBundleID("net.evil.com.apple.Safari"))
+    }
+
+    func test_never_offers_apple_files() {
+        XCTAssertFalse(LeftoverFinder.matches(name: "com.apple.example.app", mode: .standard, bundle: bundleFixture()))
     }
 
     func test_short_display_names_are_not_matched() {

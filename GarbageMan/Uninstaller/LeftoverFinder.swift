@@ -89,9 +89,19 @@ enum LeftoverFinder {
         let lower = id.lowercased()
         guard lower.count >= 8 else { return false }
         let parts = lower.split(separator: ".", omittingEmptySubsequences: false)
-        guard parts.count >= 2, !parts.contains(where: \.isEmpty) else { return false }
-        if lower.hasPrefix("com.apple.") { return false }
+        // At least vendor + org + product, so a bare vendor prefix like
+        // `com.vendor` can never sweep up that vendor's other apps.
+        guard parts.count >= 3, !parts.contains(where: \.isEmpty) else { return false }
+        if lower == "com.apple" || lower.hasPrefix("com.apple.") || lower.contains(".com.apple.") { return false }
+        // IDs that start like a container prefix are not real bundle IDs.
+        if parts[0] == "group" || parts[0] == "groups" { return false }
+        if isTeamIDComponent(String(id.split(separator: ".").first ?? "")) { return false }
         return true
+    }
+
+    /// Apple team IDs are exactly 10 characters of A-Z and 0-9.
+    static func isTeamIDComponent(_ s: String) -> Bool {
+        s.count == 10 && s.unicodeScalars.allSatisfy { ("A"..."Z").contains($0) || ("0"..."9").contains($0) }
     }
 
     /// Pure-function name matcher — extracted for unit testing.
@@ -102,6 +112,8 @@ enum LeftoverFinder {
         guard isMatchableBundleID(id) else { return false }
         let lowerName = name.lowercased()
         let lowerID = id.lowercased()
+        // Never offer Apple's own files, whatever app is being removed.
+        if lowerName.hasPrefix("com.apple.") || lowerName.contains(".com.apple.") { return false }
 
         // Universal rules (apply in both modes):
         // 1. exact bundle ID match
@@ -110,11 +122,11 @@ enum LeftoverFinder {
         if lowerName.hasPrefix(lowerID + ".") { return true }
         // 3. Group Containers: `group.<id>` or a team-ID prefix `<TEAMID>.<id>`
         if lowerName == "group.\(lowerID)" || lowerName.hasPrefix("group.\(lowerID).") { return true }
-        if let dot = lowerName.firstIndex(of: ".") {
-            let prefix = lowerName[..<dot]
-            let rest = lowerName[lowerName.index(after: dot)...]
-            let isTeamID = (6...10).contains(prefix.count) && prefix.allSatisfy { $0.isLetter || $0.isNumber }
-            if isTeamID && (rest == lowerID || rest.hasPrefix(lowerID + ".")) { return true }
+        if let dot = name.firstIndex(of: ".") {
+            // Team ID is checked on the original (case-sensitive) name.
+            let prefix = String(name[..<dot])
+            let rest = String(name[name.index(after: dot)...]).lowercased()
+            if isTeamIDComponent(prefix) && (rest == lowerID || rest.hasPrefix(lowerID + ".")) { return true }
         }
 
         if mode == .launchPlist {
