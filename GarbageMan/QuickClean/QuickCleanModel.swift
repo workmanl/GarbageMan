@@ -19,6 +19,14 @@ final class QuickCleanModel {
         let errorMessage: String?
     }
 
+    /// Size of one scanned path. Kept per path so totals can skip folders
+    /// that another category already covers (for example Safari's cache
+    /// lives inside `~/Library/Caches`).
+    struct PathSize: Equatable {
+        let url: URL
+        let bytes: UInt64
+    }
+
     struct CategoryRow: Identifiable, Equatable {
         let category: CleanCategory
         var size: UInt64?
@@ -33,6 +41,8 @@ final class QuickCleanModel {
         /// Subpaths the scanner was unable to read on the last scan, usually
         /// permission denials. UI surfaces a warning glyph when non-empty.
         var unreadablePaths: [URL] = []
+        /// Per-path sizes from the last scan. Sums to `size`.
+        var pathSizes: [PathSize] = []
         /// Estimated bytes recovered by the most recent clean operation.
         /// Set during `cleanSequentially()` and auto-cleared a few seconds
         /// after the clean finishes so the inline confirmation fades out.
@@ -71,11 +81,10 @@ final class QuickCleanModel {
         }
     }
 
+    /// Selected bytes with overlapping paths counted once. Row sizes stay
+    /// as-is; only the totals are de-duplicated.
     var totalSelectedBytes: UInt64 {
-        rows.reduce(0) { acc, row in
-            guard row.isSelected, let size = row.size else { return acc }
-            return acc &+ size
-        }
+        Self.uniqueBytes(of: rows.filter(\.isSelected).flatMap(\.pathSizes))
     }
 
     var cleanableRows: [CategoryRow] {
@@ -85,7 +94,7 @@ final class QuickCleanModel {
     }
 
     var cleanableBytes: UInt64 {
-        cleanableRows.reduce(0) { acc, row in acc &+ (row.size ?? 0) }
+        Self.uniqueBytes(of: cleanableRows.flatMap(\.pathSizes))
     }
 
     var hasCleanableSelection: Bool {
@@ -93,7 +102,27 @@ final class QuickCleanModel {
     }
 
     var totalBytes: UInt64 {
-        rows.reduce(0) { acc, row in acc &+ (row.size ?? 0) }
+        Self.uniqueBytes(of: rows.flatMap(\.pathSizes))
+    }
+
+    /// Sum of `entries`, skipping any path that equals or sits inside another
+    /// entry's path, so nested folders are not counted twice.
+    nonisolated static func uniqueBytes(of entries: [PathSize]) -> UInt64 {
+        let components = entries.map { $0.url.standardizedFileURL.pathComponents }
+        var total: UInt64 = 0
+        for (i, entry) in entries.enumerated() {
+            let mine = components[i]
+            let covered = components.indices.contains { j in
+                guard j != i else { return false }
+                let other = components[j]
+                guard other.count <= mine.count,
+                      Array(mine.prefix(other.count)) == other else { return false }
+                // Identical paths: keep the first one only.
+                return other.count < mine.count || j < i
+            }
+            if !covered { total &+= entry.bytes }
+        }
+        return total
     }
 
     var selectedCount: Int { rows.filter(\.isSelected).count }
@@ -112,6 +141,7 @@ final class QuickCleanModel {
         state = .scanning
         for idx in rows.indices {
             rows[idx].size = nil
+            rows[idx].pathSizes = []
             rows[idx].isScanning = true
             rows[idx].unreadablePaths = []
             // Preserve lastReclaimed across re-scans so the inline
@@ -125,20 +155,27 @@ final class QuickCleanModel {
             rows[idx].primaryPath = resolved.first
         }
 
-        await withTaskGroup(of: (String, CacheScanner.ScanResult).self) { group in
+        await withTaskGroup(of: (String, CacheScanner.ScanResult, [PathSize]).self) { group in
             for row in rows {
                 let urls = row.category.resolvedPaths()
                 if urls.isEmpty {
-                    self.applyResult(for: row.id, result: .empty)
+                    self.applyResult(for: row.id, result: .empty, pathSizes: [])
                     continue
                 }
                 group.addTask {
-                    let result = await CacheScanner.detailed(of: urls)
-                    return (row.id, result)
+                    var aggregate = CacheScanner.ScanResult.empty
+                    var sizes: [PathSize] = []
+                    for url in urls {
+                        let partial = await CacheScanner.detailed(of: url)
+                        aggregate.bytes &+= partial.bytes
+                        aggregate.unreadablePaths.append(contentsOf: partial.unreadablePaths)
+                        sizes.append(PathSize(url: url, bytes: partial.bytes))
+                    }
+                    return (row.id, aggregate, sizes)
                 }
             }
-            for await (id, result) in group {
-                applyResult(for: id, result: result)
+            for await (id, result, sizes) in group {
+                applyResult(for: id, result: result, pathSizes: sizes)
             }
         }
 
@@ -152,10 +189,11 @@ final class QuickCleanModel {
         rows[idx].isScanning = false
     }
 
-    private func applyResult(for id: String, result: CacheScanner.ScanResult) {
+    private func applyResult(for id: String, result: CacheScanner.ScanResult, pathSizes: [PathSize]) {
         guard let idx = rows.firstIndex(where: { $0.id == id }) else { return }
         rows[idx].size = result.bytes
         rows[idx].unreadablePaths = result.unreadablePaths
+        rows[idx].pathSizes = pathSizes
         rows[idx].isScanning = false
     }
 
