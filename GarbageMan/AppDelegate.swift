@@ -11,7 +11,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationShouldHandleReopen(_ sender: NSApplication, hasVisibleWindows flag: Bool) -> Bool {
         if !flag {
-            NSApp.windows.first?.makeKeyAndOrderFront(nil)
+            NSApp.mainContentWindow?.makeKeyAndOrderFront(nil)
         }
         return true
     }

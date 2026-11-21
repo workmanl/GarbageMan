@@ -58,9 +58,11 @@ final class MenuBarController: NSObject, NSMenuDelegate {
         diskItem.isEnabled = false
         batteryItem.isEnabled = false
 
-        menu.addItem(makeItem(title: "Quick Clean…", action: #selector(openMain), key: "1"))
-        menu.addItem(makeItem(title: "Uninstaller…", action: #selector(openMain), key: "2"))
-        menu.addItem(makeItem(title: "Disk Inspector…", action: #selector(openMain), key: "3"))
+        for (feature, key) in Feature.menuBarShortcuts {
+            let item = makeItem(title: feature.menuTitle, action: #selector(openFeature(_:)), key: key)
+            item.representedObject = feature.rawValue
+            menu.addItem(item)
+        }
         menu.addItem(.separator())
         menu.addItem(headerItem("System"))
         menu.addItem(cpuItem)
@@ -92,9 +94,12 @@ final class MenuBarController: NSObject, NSMenuDelegate {
         return item
     }
 
-    @objc private func openMain() {
+    @objc private func openFeature(_ sender: NSMenuItem) {
         NSApp.activate(ignoringOtherApps: true)
-        NSApp.windows.first?.makeKeyAndOrderFront(nil)
+        NSApp.mainContentWindow?.makeKeyAndOrderFront(nil)
+        if let raw = sender.representedObject as? String, let feature = Feature(rawValue: raw) {
+            feature.requestShow()
+        }
     }
 
     @objc private func showAbout() {
@@ -165,5 +170,13 @@ final class MenuBarController: NSObject, NSMenuDelegate {
         line.append(NSAttributedString(string: "\(label)    ", attributes: labelAttrs))
         line.append(NSAttributedString(string: value, attributes: valueAttrs))
         return line
+    }
+}
+
+extension NSApplication {
+    /// The main GarbageMan window. `windows.first` can be the status item's
+    /// own window or the About panel, neither of which can become main.
+    var mainContentWindow: NSWindow? {
+        windows.first { $0.canBecomeMain && !($0 is NSPanel) }
     }
 }

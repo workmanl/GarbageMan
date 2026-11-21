@@ -52,6 +52,7 @@ targets:
       - path: GarbageMan/QuickClean
       - path: GarbageMan/Uninstaller
       - path: GarbageMan/DiskInspector
+      - path: GarbageMan/Navigation
     settings:
       base:
         PRODUCT_NAME: GarbageManTests

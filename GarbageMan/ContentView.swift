@@ -27,32 +27,8 @@ struct ContentView: View {
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
         }
-    }
-}
-
-enum Feature: String, CaseIterable, Identifiable, Hashable {
-    case quickClean
-    case uninstaller
-    case diskInspector
-    case settings
-
-    var id: String { rawValue }
-
-    var title: String {
-        switch self {
-        case .quickClean: "Quick Clean"
-        case .uninstaller: "Uninstaller"
-        case .diskInspector: "Disk Inspector"
-        case .settings: "Settings"
-        }
-    }
-
-    var symbol: String {
-        switch self {
-        case .quickClean: "trash.circle"
-        case .uninstaller: "shippingbox"
-        case .diskInspector: "externaldrive"
-        case .settings: "gearshape"
+        .onReceive(NotificationCenter.default.publisher(for: .showFeature)) { note in
+            if let feature = Feature(showRequest: note) { selection = feature }
         }
     }
 }
