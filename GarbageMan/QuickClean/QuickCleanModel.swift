@@ -51,6 +51,14 @@ final class QuickCleanModel {
         var id: String { category.id }
     }
 
+    /// Rows grouped for display under one `CleanCategory.Section` header.
+    struct RowSection: Identifiable, Equatable {
+        let section: CleanCategory.Section
+        let rows: [CategoryRow]
+
+        var id: String { section.rawValue }
+    }
+
     private(set) var rows: [CategoryRow]
     private(set) var state: ScanState = .idle
     private(set) var lastScanCompletedAt: Date?
@@ -125,7 +133,24 @@ final class QuickCleanModel {
         return total
     }
 
-    var selectedCount: Int { rows.filter(\.isSelected).count }
+    /// Rows grouped by section, in section order. The Developer section is
+    /// left out when none of its tools or folders exist on this Mac, so a
+    /// non-developer never sees a list of "Not installed" Xcode and npm rows.
+    var sections: [RowSection] {
+        CleanCategory.Section.allCases.compactMap { section in
+            let members = rows.filter { $0.category.section == section }
+            guard !members.isEmpty else { return nil }
+            if section == .developer, !members.contains(where: \.hasResolvedPaths) {
+                return nil
+            }
+            return RowSection(section: section, rows: members)
+        }
+    }
+
+    /// Rows the list actually shows.
+    var visibleRows: [CategoryRow] { sections.flatMap(\.rows) }
+
+    var selectedCount: Int { visibleRows.filter(\.isSelected).count }
 
     func setSelection(for id: String, to isSelected: Bool) {
         guard let idx = rows.firstIndex(where: { $0.id == id }) else { return }

@@ -4,7 +4,7 @@ A small native macOS app that finds and clears the junk that quietly fills a Mac
 
 ## Features
 
-- **Quick Clean**: sizes and clears user caches and logs, browser caches (Safari, Chrome, Firefox, Arc, Brave), Xcode DerivedData, Archives and Device Support, npm, Yarn, pnpm, pip and Gem caches.
+- **Quick Clean**: sizes and clears user caches and logs, browser caches (Safari, Chrome, Firefox, Arc, Brave), Xcode DerivedData, Archives and Device Support, npm, Yarn, pnpm, pip and Gem caches. Developer items are grouped in their own Developer section, which only appears when at least one of those tools or folders exists on the Mac.
   - **Unavailable Simulators**: removes simulator devices whose runtime is no longer installed, using Apple's own `xcrun simctl delete unavailable`.
   - **Old Temp Build Folders**: your own folders in `/private/tmp` that nothing has touched for 2+ days (old build and test output). Folders belonging to running tools and the system are skipped.
 - **Uninstaller**: drag in an app to find its leftover files (preferences, caches, containers, launch agents) and remove them together.

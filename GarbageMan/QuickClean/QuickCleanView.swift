@@ -61,7 +61,7 @@ struct QuickCleanView: View {
         case .ready:
             let total = model.totalBytes.formattedByteCount
             let date = model.lastScanCompletedAt.map { DateFormatter.localizedString(from: $0, dateStyle: .none, timeStyle: .short) } ?? ""
-            return "Found \(total) across \(model.rows.count) categories\(date.isEmpty ? "" : " (\(date))")."
+            return "Found \(total) across \(model.visibleRows.count) categories\(date.isEmpty ? "" : " (\(date))")."
         }
     }
 
@@ -76,17 +76,21 @@ struct QuickCleanView: View {
 
     private var list: some View {
         List(selection: $focusedRowID) {
-            ForEach(model.rows) { row in
-                CategoryRowView(
-                    row: row,
-                    isSelected: Binding(
-                        get: { row.isSelected },
-                        set: { model.setSelection(for: row.id, to: $0) }
-                    ),
-                    isActivelyCleaning: isActivelyCleaning(row),
-                    trailingAction: trailingAction(for: row)
-                )
-                .tag(row.id)
+            ForEach(model.sections) { group in
+                Section(group.section.title) {
+                    ForEach(group.rows) { row in
+                        CategoryRowView(
+                            row: row,
+                            isSelected: Binding(
+                                get: { row.isSelected },
+                                set: { model.setSelection(for: row.id, to: $0) }
+                            ),
+                            isActivelyCleaning: isActivelyCleaning(row),
+                            trailingAction: trailingAction(for: row)
+                        )
+                        .tag(row.id)
+                    }
+                }
             }
         }
         .listStyle(.inset(alternatesRowBackgrounds: true))
@@ -126,7 +130,7 @@ struct QuickCleanView: View {
             Rectangle().fill(Color.secondary.opacity(0.15)).frame(width: 1)
             kpiTile(label: "SELECTED", value: model.totalSelectedBytes, tone: .accent)
             Rectangle().fill(Color.secondary.opacity(0.15)).frame(width: 1)
-            kpiTile(label: "CATEGORIES", count: model.cleanableRows.count, total: model.rows.count)
+            kpiTile(label: "CATEGORIES", count: model.cleanableRows.count, total: model.visibleRows.count)
         }
         .frame(height: 64)
     }
@@ -179,7 +183,7 @@ struct QuickCleanView: View {
             VStack(alignment: .trailing) {
                 Text("Selected: \(model.totalSelectedBytes.formattedByteCount)")
                     .font(.headline.monospacedDigit())
-                Text("\(model.selectedCount) of \(model.rows.count) categories")
+                Text("\(model.selectedCount) of \(model.visibleRows.count) categories")
                     .font(.caption)
                     .foregroundStyle(.secondary)
             }

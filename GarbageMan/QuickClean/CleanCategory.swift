@@ -11,10 +11,26 @@ struct CustomCleanOutcome: Equatable {
 /// A category of reclaimable disk space. Each category resolves to one or more
 /// concrete paths at runtime.
 struct CleanCategory: Identifiable, Hashable {
+
+    /// Where the category is listed in Quick Clean. Developer categories are
+    /// only shown when at least one of them exists on this Mac.
+    enum Section: String, CaseIterable {
+        case general
+        case developer
+
+        var title: String {
+            switch self {
+            case .general: "General"
+            case .developer: "Developer"
+            }
+        }
+    }
+
     let id: String
     let title: String
     let subtitle: String
     let symbol: String
+    let section: Section
     /// When `true` the resolved paths themselves are recycled (each one is a
     /// disposable folder, like a stale build dir in /private/tmp). When
     /// `false` (default) only the CHILDREN of each root are recycled so dirs
@@ -32,6 +48,7 @@ struct CleanCategory: Identifiable, Hashable {
         title: String,
         subtitle: String,
         symbol: String,
+        section: Section = .general,
         recyclesRootsDirectly: Bool = false,
         customClean: (() async -> CustomCleanOutcome)? = nil,
         pathProvider: @escaping () -> [URL]
@@ -40,6 +57,7 @@ struct CleanCategory: Identifiable, Hashable {
         self.title = title
         self.subtitle = subtitle
         self.symbol = symbol
+        self.section = section
         self.recyclesRootsDirectly = recyclesRootsDirectly
         self.customClean = customClean
         self.pathProvider = pathProvider
@@ -153,21 +171,24 @@ extension CleanCategory {
         id: "xcode-derived",
         title: "Xcode DerivedData",
         subtitle: "~/Library/Developer/Xcode/DerivedData",
-        symbol: "hammer"
+        symbol: "hammer",
+        section: .developer
     ) { [home.appending(path: "Library/Developer/Xcode/DerivedData")] }
 
     static let xcodeArchives = CleanCategory(
         id: "xcode-archives",
         title: "Xcode Archives",
         subtitle: "~/Library/Developer/Xcode/Archives",
-        symbol: "archivebox"
+        symbol: "archivebox",
+        section: .developer
     ) { [home.appending(path: "Library/Developer/Xcode/Archives")] }
 
     static let xcodeDeviceSupport = CleanCategory(
         id: "xcode-device-support",
         title: "Xcode Device Support",
         subtitle: "~/Library/Developer/Xcode/iOS DeviceSupport",
-        symbol: "iphone"
+        symbol: "iphone",
+        section: .developer
     ) {
         [
             home.appending(path: "Library/Developer/Xcode/iOS DeviceSupport"),
@@ -186,6 +207,7 @@ extension CleanCategory {
         title: "Unavailable Simulators",
         subtitle: "xcrun simctl delete unavailable",
         symbol: "iphone.slash",
+        section: .developer,
         customClean: { await SimulatorCleaner.deleteUnavailable() }
     ) { SimulatorCleaner.unavailableDeviceDirectories() }
 
@@ -196,6 +218,7 @@ extension CleanCategory {
         title: "Old Temp Build Folders",
         subtitle: "/private/tmp folders untouched for 2+ days",
         symbol: "folder.badge.minus",
+        section: .developer,
         recyclesRootsDirectly: true
     ) { TempFolderFinder.staleFolders() }
 
@@ -203,14 +226,16 @@ extension CleanCategory {
         id: "npm-cache",
         title: "npm Cache",
         subtitle: "~/.npm",
-        symbol: "shippingbox"
+        symbol: "shippingbox",
+        section: .developer
     ) { [home.appending(path: ".npm")] }
 
     static let yarnCache = CleanCategory(
         id: "yarn-cache",
         title: "Yarn Cache",
         subtitle: "~/Library/Caches/Yarn",
-        symbol: "shippingbox.fill"
+        symbol: "shippingbox.fill",
+        section: .developer
     ) {
         [
             home.appending(path: "Library/Caches/Yarn"),
@@ -222,7 +247,8 @@ extension CleanCategory {
         id: "pnpm-store",
         title: "pnpm Store",
         subtitle: "~/Library/pnpm/store",
-        symbol: "cube.box"
+        symbol: "cube.box",
+        section: .developer
     ) {
         [
             home.appending(path: "Library/pnpm/store"),
@@ -234,13 +260,15 @@ extension CleanCategory {
         id: "pip-cache",
         title: "pip Cache",
         subtitle: "~/Library/Caches/pip",
-        symbol: "ladybug"
+        symbol: "ladybug",
+        section: .developer
     ) { [home.appending(path: "Library/Caches/pip")] }
 
     static let gemCache = CleanCategory(
         id: "gem-cache",
         title: "Gem Cache",
         subtitle: "~/.gem",
-        symbol: "diamond"
+        symbol: "diamond",
+        section: .developer
     ) { [home.appending(path: ".gem")] }
 }
