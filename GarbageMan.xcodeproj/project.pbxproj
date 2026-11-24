@@ -42,6 +42,7 @@
 		9E2F97EF5DA37FCBFA744939 /* AppBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C70CBE8C20E65CD301AFE43 /* AppBundle.swift */; };
 		9E8BCE175C33ABF10004AC70 /* TempFolderFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1294F0EBAE683CC538CFB5 /* TempFolderFinder.swift */; };
 		A00172A484E794DE87612B8C /* DiskInspectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF252B4B1C13EE80A739EB8 /* DiskInspectorView.swift */; };
+		AA1F6250A401207ABA2C59B8 /* DiskInspectorModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF3C52B92E6ACED014471F76 /* DiskInspectorModelTests.swift */; };
 		AD08CBC77F7E94D433DFB447 /* TrashEmptier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B988D456A01314154671B0F /* TrashEmptier.swift */; };
 		B3561F013FDA8B7E7EA3F9A6 /* CacheScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D82DA85F8E0A84771CE358D /* CacheScanner.swift */; };
 		B3F8E0ECE3FBB186BE30CB20 /* CleanerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF58634BA2751DF5C8834B9A /* CleanerTests.swift */; };
@@ -99,6 +100,7 @@
 		CF6CE64A682205EBE64126C6 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		D95A88776C48242C6C957188 /* QuickCleanModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickCleanModel.swift; sourceTree = "<group>"; };
 		DF040C9E23C05378AC593077 /* FeatureNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureNavigation.swift; sourceTree = "<group>"; };
+		DF3C52B92E6ACED014471F76 /* DiskInspectorModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiskInspectorModelTests.swift; sourceTree = "<group>"; };
 		E04BAAD9244C0038B3F758B7 /* QuickCleanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickCleanView.swift; sourceTree = "<group>"; };
 		E6A4BBA7A0660CFCC30290A7 /* GarbageManTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GarbageManTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF81E2F0CA1CE188C26E1D5C /* AboutWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutWindow.swift; sourceTree = "<group>"; };
@@ -154,6 +156,7 @@
 				889CE31A6E585EE92B28A78E /* CacheScannerErrorTests.swift */,
 				4D37E6F16E95DB71F69078B0 /* CacheScannerTests.swift */,
 				BF58634BA2751DF5C8834B9A /* CleanerTests.swift */,
+				DF3C52B92E6ACED014471F76 /* DiskInspectorModelTests.swift */,
 				A5E61530EF83BC20895969EA /* FeatureNavigationTests.swift */,
 				281C74A9826B9A4E3D015AFE /* FolderSizerTests.swift */,
 				BAA6E4742C3FB9686B72C8BB /* InspectorCacheTests.swift */,
@@ -355,6 +358,7 @@
 				D92387CBC864D18D2B3BE95A /* Cleaner.swift in Sources */,
 				B3F8E0ECE3FBB186BE30CB20 /* CleanerTests.swift in Sources */,
 				8A32872412FB803A27794A12 /* DiskInspectorModel.swift in Sources */,
+				AA1F6250A401207ABA2C59B8 /* DiskInspectorModelTests.swift in Sources */,
 				0C33FDF20D5DB2F5EBFD5647 /* DiskInspectorView.swift in Sources */,
 				32B8972EF0FA1138D9359CE8 /* FeatureNavigation.swift in Sources */,
 				2B80FF00DA4067442751F47F /* FeatureNavigationTests.swift in Sources */,

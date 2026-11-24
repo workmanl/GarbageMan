@@ -17,11 +17,14 @@ final class DiskInspectorModel {
 
     private var inMemoryCache: [String: InspectorCache.Snapshot]
     private let persistence: InspectorCache
+    private let sizer: (URL) async -> [FolderSizer.Entry]
 
     init(root: URL = FileManager.default.homeDirectoryForCurrentUser,
-         persistence: InspectorCache = InspectorCache()) {
+         persistence: InspectorCache = InspectorCache(),
+         sizer: @escaping (URL) async -> [FolderSizer.Entry] = { await FolderSizer.contents(of: $0) }) {
         self.path = [root]
         self.persistence = persistence
+        self.sizer = sizer
         self.inMemoryCache = persistence.load()
     }
 
@@ -74,11 +77,16 @@ final class DiskInspectorModel {
         // folder doesn't flash empty.
         phase = .scanning
 
-        let fresh = await FolderSizer.contents(of: root)
+        let fresh = await sizer(root)
         let now = Date()
         let snapshot = persistence.snapshotAdapter(from: fresh, scannedAt: now)
         inMemoryCache[key] = snapshot
         try? persistence.save(inMemoryCache)
+
+        // The user can go Up or Home while a slow folder is still being
+        // sized. Keep the result in the cache for next time, but don't show
+        // it under a different folder's breadcrumb.
+        guard currentRoot == root else { return }
 
         entries = fresh
         lastScannedAt = now
