@@ -264,11 +264,35 @@ extension CleanCategory {
         section: .developer
     ) { [home.appending(path: "Library/Caches/pip")] }
 
+    /// Only RubyGems' caches, never `~/.gem` itself: that folder also holds
+    /// gems installed with `--user-install` and the RubyGems API key
+    /// (`~/.gem/credentials`).
     static let gemCache = CleanCategory(
         id: "gem-cache",
         title: "Gem Cache",
-        subtitle: "~/.gem",
+        subtitle: "~/.gem/specs, ~/.gem/ruby/*/cache",
         symbol: "diamond",
         section: .developer
-    ) { [home.appending(path: ".gem")] }
+    ) { gemCacheRoots(home: home) }
+
+    /// RubyGems' spec cache plus the downloaded `.gem` files in each user gem
+    /// directory, for both the classic `~/.gem` layout and the XDG one
+    /// (`~/.cache/gem`, `~/.local/share/gem`).
+    static func gemCacheRoots(home: URL) -> [URL] {
+        var roots = [
+            home.appending(path: ".gem/specs"),
+            home.appending(path: ".cache/gem/specs")
+        ]
+        for gemHome in [".gem/ruby", ".local/share/gem/ruby"] {
+            let versions = (try? FileManager.default.contentsOfDirectory(
+                at: home.appending(path: gemHome),
+                includingPropertiesForKeys: nil,
+                options: [.skipsHiddenFiles]
+            )) ?? []
+            roots += versions
+                .sorted { $0.lastPathComponent < $1.lastPathComponent }
+                .map { $0.appending(path: "cache") }
+        }
+        return roots
+    }
 }

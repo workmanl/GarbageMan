@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		00B14EFA19BCDB1FA83B7284 /* GemCacheRootsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42EEEC490A1FCF4F7E0543B0 /* GemCacheRootsTests.swift */; };
 		02F18CF29D950E5946B10FE8 /* FolderSizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5651531F4DC801EFE44485C7 /* FolderSizer.swift */; };
 		03F50DABFC5A5157469DA093 /* QuickCleanModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95A88776C48242C6C957188 /* QuickCleanModel.swift */; };
 		0C33FDF20D5DB2F5EBFD5647 /* DiskInspectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF252B4B1C13EE80A739EB8 /* DiskInspectorView.swift */; };
@@ -73,6 +74,7 @@
 		3C7270FBA890484252750E67 /* QuickCleanTotalsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickCleanTotalsTests.swift; sourceTree = "<group>"; };
 		40FF27E11CC4132FC0B0FC5B /* CleanCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CleanCategory.swift; sourceTree = "<group>"; };
 		41E60A16EC97C132DF392000 /* LeftoverFinderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftoverFinderTests.swift; sourceTree = "<group>"; };
+		42EEEC490A1FCF4F7E0543B0 /* GemCacheRootsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GemCacheRootsTests.swift; sourceTree = "<group>"; };
 		4A3C691310ED09A685864879 /* GarbageMan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GarbageMan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D334BE7F4648A3DD80A9DC6 /* TempFolderFinderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempFolderFinderTests.swift; sourceTree = "<group>"; };
 		4D37E6F16E95DB71F69078B0 /* CacheScannerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheScannerTests.swift; sourceTree = "<group>"; };
@@ -159,6 +161,7 @@
 				DF3C52B92E6ACED014471F76 /* DiskInspectorModelTests.swift */,
 				A5E61530EF83BC20895969EA /* FeatureNavigationTests.swift */,
 				281C74A9826B9A4E3D015AFE /* FolderSizerTests.swift */,
+				42EEEC490A1FCF4F7E0543B0 /* GemCacheRootsTests.swift */,
 				BAA6E4742C3FB9686B72C8BB /* InspectorCacheTests.swift */,
 				41E60A16EC97C132DF392000 /* LeftoverFinderTests.swift */,
 				93F0828D58A50169303D86E4 /* QuickCleanSectionsTests.swift */,
@@ -364,6 +367,7 @@
 				2B80FF00DA4067442751F47F /* FeatureNavigationTests.swift in Sources */,
 				02F18CF29D950E5946B10FE8 /* FolderSizer.swift in Sources */,
 				F761670AB4BE79928BB3CE8D /* FolderSizerTests.swift in Sources */,
+				00B14EFA19BCDB1FA83B7284 /* GemCacheRootsTests.swift in Sources */,
 				2B3DDD127168F2F387488F5D /* InspectorCache.swift in Sources */,
 				0E745B575EC5DD142F30AA23 /* InspectorCacheTests.swift in Sources */,
 				1C07876E7129B1FA0CBFB37A /* LeftoverFinder.swift in Sources */,
