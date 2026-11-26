@@ -96,9 +96,11 @@ final class MenuBarController: NSObject, NSMenuDelegate {
 
     @objc private func openFeature(_ sender: NSMenuItem) {
         NSApp.activate(ignoringOtherApps: true)
-        NSApp.mainContentWindow?.makeKeyAndOrderFront(nil)
-        if let raw = sender.representedObject as? String, let feature = Feature(rawValue: raw) {
-            feature.requestShow()
+        guard let raw = sender.representedObject as? String, let feature = Feature(rawValue: raw) else { return }
+        MainWindowRouter.shared.show(feature) {
+            guard let window = NSApp.mainContentWindow else { return false }
+            window.makeKeyAndOrderFront(nil)
+            return true
         }
     }
 

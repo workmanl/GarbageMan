@@ -18,11 +18,13 @@
 		188AE8EC6044E15EBC05B0A6 /* UninstallerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6715D9ADFC1B735CCA529DD0 /* UninstallerModel.swift */; };
 		1C07876E7129B1FA0CBFB37A /* LeftoverFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 640EDBE366C3FE58DD29107F /* LeftoverFinder.swift */; };
 		23DD8F3A1A3E0CC48A07EC8E /* FeatureNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF040C9E23C05378AC593077 /* FeatureNavigation.swift */; };
+		2424C2731A0CD7956E1E9624 /* MainWindowRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A02B4E56C12F2861C9AEE21 /* MainWindowRouter.swift */; };
 		2B3DDD127168F2F387488F5D /* InspectorCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD90EBE839990425AA249FE4 /* InspectorCache.swift */; };
 		2B80FF00DA4067442751F47F /* FeatureNavigationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E61530EF83BC20895969EA /* FeatureNavigationTests.swift */; };
 		2CB8B72E3BC9C84961879DE1 /* DiskInspectorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 776141B122A6FF8E105EBA30 /* DiskInspectorModel.swift */; };
 		31F2EEE7CB6444FC68B484E2 /* CacheScannerErrorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889CE31A6E585EE92B28A78E /* CacheScannerErrorTests.swift */; };
 		32B8972EF0FA1138D9359CE8 /* FeatureNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF040C9E23C05378AC593077 /* FeatureNavigation.swift */; };
+		3D315816FAB6432E113472DF /* MainWindowRouterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656BBBDAA7DBBE3A5009C4C8 /* MainWindowRouterTests.swift */; };
 		3E593C028F1E5A389A1CAC08 /* AboutWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF81E2F0CA1CE188C26E1D5C /* AboutWindow.swift */; };
 		43BEBE43DA4D2667E50D0EE0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2053139C6F466CEED217D3A4 /* AppDelegate.swift */; };
 		4867CCD00B67491D62D631DA /* TempFolderFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1294F0EBAE683CC538CFB5 /* TempFolderFinder.swift */; };
@@ -30,6 +32,7 @@
 		516C131830A01D82E3C409D4 /* SimulatorCleanerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05306F53205EFF78C8CD0F0F /* SimulatorCleanerTests.swift */; };
 		59A720AD91A051CDDB5365F8 /* QuickCleanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E04BAAD9244C0038B3F758B7 /* QuickCleanView.swift */; };
 		5BC2CC89B0B9FDFEB5BCDBDD /* UninstallerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96BE29E01D6490F635BB9292 /* UninstallerView.swift */; };
+		5E634EC55F25F4DCCD90EB21 /* MainWindowRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A02B4E56C12F2861C9AEE21 /* MainWindowRouter.swift */; };
 		6235D2282B458C25F663EBEE /* TempFolderFinderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D334BE7F4648A3DD80A9DC6 /* TempFolderFinderTests.swift */; };
 		669D597A8D7371C032ACB1C2 /* UninstallerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6715D9ADFC1B735CCA529DD0 /* UninstallerModel.swift */; };
 		6DAD8024F6D52C6C8F789D2A /* CleanCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40FF27E11CC4132FC0B0FC5B /* CleanCategory.swift */; };
@@ -70,6 +73,7 @@
 		05306F53205EFF78C8CD0F0F /* SimulatorCleanerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulatorCleanerTests.swift; sourceTree = "<group>"; };
 		2053139C6F466CEED217D3A4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		281C74A9826B9A4E3D015AFE /* FolderSizerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderSizerTests.swift; sourceTree = "<group>"; };
+		2A02B4E56C12F2861C9AEE21 /* MainWindowRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWindowRouter.swift; sourceTree = "<group>"; };
 		2B988D456A01314154671B0F /* TrashEmptier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrashEmptier.swift; sourceTree = "<group>"; };
 		3C7270FBA890484252750E67 /* QuickCleanTotalsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickCleanTotalsTests.swift; sourceTree = "<group>"; };
 		40FF27E11CC4132FC0B0FC5B /* CleanCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CleanCategory.swift; sourceTree = "<group>"; };
@@ -85,6 +89,7 @@
 		5EADCB87392454A9DBEE2C30 /* SystemMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemMonitor.swift; sourceTree = "<group>"; };
 		60CB7EF4635EFB4D6A348521 /* MenuBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarController.swift; sourceTree = "<group>"; };
 		640EDBE366C3FE58DD29107F /* LeftoverFinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftoverFinder.swift; sourceTree = "<group>"; };
+		656BBBDAA7DBBE3A5009C4C8 /* MainWindowRouterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWindowRouterTests.swift; sourceTree = "<group>"; };
 		6715D9ADFC1B735CCA529DD0 /* UninstallerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UninstallerModel.swift; sourceTree = "<group>"; };
 		776141B122A6FF8E105EBA30 /* DiskInspectorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiskInspectorModel.swift; sourceTree = "<group>"; };
 		7C70CBE8C20E65CD301AFE43 /* AppBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppBundle.swift; sourceTree = "<group>"; };
@@ -164,6 +169,7 @@
 				42EEEC490A1FCF4F7E0543B0 /* GemCacheRootsTests.swift */,
 				BAA6E4742C3FB9686B72C8BB /* InspectorCacheTests.swift */,
 				41E60A16EC97C132DF392000 /* LeftoverFinderTests.swift */,
+				656BBBDAA7DBBE3A5009C4C8 /* MainWindowRouterTests.swift */,
 				93F0828D58A50169303D86E4 /* QuickCleanSectionsTests.swift */,
 				3C7270FBA890484252750E67 /* QuickCleanTotalsTests.swift */,
 				05306F53205EFF78C8CD0F0F /* SimulatorCleanerTests.swift */,
@@ -225,6 +231,7 @@
 			isa = PBXGroup;
 			children = (
 				DF040C9E23C05378AC593077 /* FeatureNavigation.swift */,
+				2A02B4E56C12F2861C9AEE21 /* MainWindowRouter.swift */,
 			);
 			path = Navigation;
 			sourceTree = "<group>";
@@ -337,6 +344,7 @@
 				11D49F4259DAE5C0CC44281A /* GarbageManApp.swift in Sources */,
 				E941248F66840C228F7B5031 /* InspectorCache.swift in Sources */,
 				7D6E694A3246F1DD8054AB1A /* LeftoverFinder.swift in Sources */,
+				5E634EC55F25F4DCCD90EB21 /* MainWindowRouter.swift in Sources */,
 				E366FA9788C9C7CA4665064A /* MenuBarController.swift in Sources */,
 				9D8A19F2212C978148D0D578 /* QuickCleanModel.swift in Sources */,
 				B86FB23F8B100BA139ADA220 /* QuickCleanView.swift in Sources */,
@@ -372,6 +380,8 @@
 				0E745B575EC5DD142F30AA23 /* InspectorCacheTests.swift in Sources */,
 				1C07876E7129B1FA0CBFB37A /* LeftoverFinder.swift in Sources */,
 				F23CDBF9FFFDFC0C897CFB51 /* LeftoverFinderTests.swift in Sources */,
+				2424C2731A0CD7956E1E9624 /* MainWindowRouter.swift in Sources */,
+				3D315816FAB6432E113472DF /* MainWindowRouterTests.swift in Sources */,
 				03F50DABFC5A5157469DA093 /* QuickCleanModel.swift in Sources */,
 				E0A27A40E8804CDAC5A5B00F /* QuickCleanSectionsTests.swift in Sources */,
 				E410532E02ECBC2A041FEF7D /* QuickCleanTotalsTests.swift in Sources */,

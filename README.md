@@ -9,7 +9,7 @@ A small native macOS app that finds and clears the junk that quietly fills a Mac
   - **Old Temp Build Folders**: your own folders in `/private/tmp` that nothing has touched for 2+ days (old build and test output). Folders belonging to running tools and the system are skipped.
 - **Uninstaller**: drag in an app to find its leftover files (preferences, caches, containers, launch agents) and remove them together.
 - **Disk Inspector**: browse folder sizes to see where your space went.
-- **Menu bar monitor**: disk, memory, CPU and battery at a glance.
+- **Menu bar monitor**: disk, memory, CPU and battery at a glance. Its menu opens Quick Clean, Uninstaller or Disk Inspector directly, and brings the main window back if you closed it.
 
 Everything except Empty Trash and simulator deletion goes to the Trash, never a permanent delete.
 

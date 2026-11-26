@@ -6,7 +6,7 @@ struct GarbageManApp: App {
     @NSApplicationDelegateAdaptor(AppDelegate.self) private var appDelegate
 
     var body: some Scene {
-        WindowGroup("GarbageMan") {
+        WindowGroup("GarbageMan", id: MainWindowRouter.windowID) {
             ContentView()
                 .frame(minWidth: 720, minHeight: 480)
         }

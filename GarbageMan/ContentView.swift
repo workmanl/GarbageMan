@@ -2,6 +2,7 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var selection: Feature = .quickClean
+    @Environment(\.openWindow) private var openWindow
 
     var body: some View {
         NavigationSplitView {
@@ -26,6 +27,11 @@ struct ContentView: View {
                 FeaturePlaceholder(feature: selection)
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
+        }
+        .onAppear {
+            let router = MainWindowRouter.shared
+            router.openWindow = { [openWindow] in openWindow(id: MainWindowRouter.windowID) }
+            if let feature = router.takePendingFeature() { selection = feature }
         }
         .onReceive(NotificationCenter.default.publisher(for: .showFeature)) { note in
             if let feature = Feature(showRequest: note) { selection = feature }
