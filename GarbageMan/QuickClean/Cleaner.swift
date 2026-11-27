@@ -39,11 +39,14 @@ enum Cleaner {
     /// Recycle a flat list of URLs in one shot. NSWorkspace handles batching
     /// internally and returns a map of original URL -> Trash URL for the
     /// successes plus a single combined error for the failures.
+    ///
+    /// `succeeded` holds the ORIGINAL URLs that moved (the map's keys), so
+    /// callers can match them against what they asked to recycle.
     static func recycle(_ urls: [URL]) async -> (succeeded: [URL], firstError: Error?) {
         guard !urls.isEmpty else { return ([], nil) }
         return await withCheckedContinuation { cont in
             NSWorkspace.shared.recycle(urls) { mapping, error in
-                cont.resume(returning: (Array(mapping.values), error))
+                cont.resume(returning: (Array(mapping.keys), error))
             }
         }
     }

@@ -192,6 +192,9 @@ struct UninstallerView: View {
         } message: { outcome in
             var lines = ["Moved \(outcome.recycled) item(s) to Trash (~\(outcome.bytesReclaimedEstimate.formattedByteCount))."]
             if outcome.failed > 0 { lines.append("\(outcome.failed) failed.") }
+            if outcome.appLeftInstalled {
+                lines.append("The app itself was not moved and is still installed. You can drag it to the Trash in Finder, which can ask for your password.")
+            }
             if let err = outcome.errorMessage { lines.append("First error: \(err)") }
             return Text(lines.joined(separator: "\n"))
         }

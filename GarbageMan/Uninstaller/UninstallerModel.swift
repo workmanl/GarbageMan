@@ -26,7 +26,36 @@ final class UninstallerModel {
         let failed: Int
         let bytesReclaimedEstimate: UInt64
         let errorMessage: String?
+        let appWasIncluded: Bool
         let appWasRecycled: Bool
+
+        /// True when the user asked to remove the app but it is still installed.
+        var appLeftInstalled: Bool { appWasIncluded && !appWasRecycled }
+
+        /// Build the outcome from what was attempted and what actually moved.
+        /// Bytes count only the items that moved, using each item's own size,
+        /// so a failed large app doesn't inflate the reclaimed total.
+        static func make(
+            attempted: [URL],
+            succeeded: [URL],
+            sizes: [URL: UInt64],
+            appURL: URL?,
+            error: Error?
+        ) -> UninstallOutcome {
+            func key(_ url: URL) -> String { url.standardizedFileURL.path }
+            let moved = Set(succeeded.map(key))
+            let movedAttempts = attempted.filter { moved.contains(key($0)) }
+            let sizeByKey = Dictionary(sizes.map { (key($0.key), $0.value) }, uniquingKeysWith: { a, _ in a })
+            let bytes = movedAttempts.reduce(UInt64(0)) { $0 &+ (sizeByKey[key($1)] ?? 0) }
+            return UninstallOutcome(
+                recycled: movedAttempts.count,
+                failed: attempted.count - movedAttempts.count,
+                bytesReclaimedEstimate: bytes,
+                errorMessage: error.map { ($0 as NSError).localizedDescription },
+                appWasIncluded: appURL != nil,
+                appWasRecycled: appURL.map { moved.contains(key($0)) } ?? false
+            )
+        }
     }
 
     private(set) var phase: Phase = .empty
@@ -120,20 +149,24 @@ final class UninstallerModel {
         phase = .uninstalling
 
         var urls: [URL] = []
-        if includeAppItself { urls.append(bundle.url) }
-        urls.append(contentsOf: selectedRows.map { $0.leftover.url })
+        var sizes: [URL: UInt64] = [:]
+        if includeAppItself {
+            urls.append(bundle.url)
+            sizes[bundle.url] = approxAppSize
+        }
+        for row in selectedRows {
+            urls.append(row.leftover.url)
+            sizes[row.leftover.url] = row.size ?? 0
+        }
 
-        let estimated = totalSelectedBytes
         let (succeeded, firstError) = await Cleaner.recycle(urls)
-        let failed = urls.count - succeeded.count
-        let approxReclaimed: UInt64 = urls.isEmpty ? 0 : UInt64(Double(estimated) * (Double(succeeded.count) / Double(urls.count)))
 
-        lastOutcome = UninstallOutcome(
-            recycled: succeeded.count,
-            failed: failed,
-            bytesReclaimedEstimate: approxReclaimed,
-            errorMessage: firstError.map { ($0 as NSError).localizedDescription },
-            appWasRecycled: includeAppItself && succeeded.contains(bundle.url)
+        lastOutcome = UninstallOutcome.make(
+            attempted: urls,
+            succeeded: succeeded,
+            sizes: sizes,
+            appURL: includeAppItself ? bundle.url : nil,
+            error: firstError
         )
         phase = .done
     }

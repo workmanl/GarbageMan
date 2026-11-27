@@ -68,5 +68,8 @@ final class CleanerTests: XCTestCase {
 
         XCTAssertFalse(FileManager.default.fileExists(atPath: target.path), "source file should be gone after recycle")
         XCTAssertEqual(succeeded.count, 1)
+        // Callers match results against what they asked to recycle, so the
+        // returned URLs must be the originals, not the new Trash locations.
+        XCTAssertEqual(succeeded.map { $0.standardizedFileURL.path }, [target.standardizedFileURL.path])
     }
 }
