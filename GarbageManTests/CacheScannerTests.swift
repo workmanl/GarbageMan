@@ -62,6 +62,19 @@ final class CacheScannerTests: XCTestCase {
         XCTAssertLessThan(bytes, 256 * 1024)
     }
 
+    func test_size_counts_hidden_files_and_folders_inside_root() async throws {
+        try writeFile(at: tmp.appending(path: "visible.bin"), byteCount: 4 * 1024)
+        let hiddenDir = tmp.appending(path: ".git/objects")
+        try FileManager.default.createDirectory(at: hiddenDir, withIntermediateDirectories: true)
+        try writeFile(at: hiddenDir.appending(path: "pack.bin"), byteCount: 512 * 1024)
+        try writeFile(at: tmp.appending(path: ".hidden.bin"), byteCount: 256 * 1024)
+
+        let bytes = await CacheScanner.size(of: [tmp])
+        // 4 KB visible + 512 KB in a hidden folder + 256 KB hidden file.
+        XCTAssertGreaterThanOrEqual(bytes, (4 + 512 + 256) * 1024)
+        XCTAssertLessThan(bytes, 1024 * 1024)
+    }
+
     func test_size_sums_multiple_roots() async throws {
         let a = tmp.appending(path: "rootA")
         let b = tmp.appending(path: "rootB")

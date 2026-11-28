@@ -66,4 +66,19 @@ final class FolderSizerTests: XCTestCase {
         XCTAssertTrue(names.contains("real"))
         XCTAssertFalse(names.contains("link"))
     }
+
+    func test_child_size_includes_hidden_folders_inside_it() async throws {
+        // A project folder whose bulk is in a hidden `.git` folder.
+        let project = tmp.appending(path: "project")
+        let gitObjects = project.appending(path: ".git/objects")
+        try FileManager.default.createDirectory(at: gitObjects, withIntermediateDirectories: true)
+        try Data(count: 4096).write(to: project.appending(path: "main.swift"))
+        try Data(count: 768 * 1024).write(to: gitObjects.appending(path: "pack.bin"))
+        // Hidden direct children of the inspected folder are still not listed.
+        try Data(count: 1024).write(to: tmp.appending(path: ".DS_Store"))
+
+        let entries = await FolderSizer.contents(of: tmp)
+        XCTAssertEqual(entries.map(\.displayName), ["project"])
+        XCTAssertGreaterThanOrEqual(entries[0].size, 768 * 1024 + 4096)
+    }
 }

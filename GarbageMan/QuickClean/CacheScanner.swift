@@ -55,11 +55,14 @@ enum CacheScanner {
         }
 
         var errorPaths: [URL] = []
+        // Hidden files count. Trashing or deleting a folder removes its
+        // hidden contents too (`.git`, `node_modules/.pnpm`, `.build`), so
+        // leaving them out made folders look far smaller than they are.
         let keys: [URLResourceKey] = [.totalFileAllocatedSizeKey, .fileAllocatedSizeKey, .isRegularFileKey, .isSymbolicLinkKey]
         guard let enumerator = fm.enumerator(
             at: url,
             includingPropertiesForKeys: keys,
-            options: [.skipsHiddenFiles],
+            options: [],
             errorHandler: { failed, _ in
                 errorPaths.append(failed)
                 return true

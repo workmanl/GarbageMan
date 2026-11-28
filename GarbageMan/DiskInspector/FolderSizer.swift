@@ -15,7 +15,9 @@ enum FolderSizer {
     }
 
     /// Return every direct child of `root` with its size, sorted descending.
-    /// Hidden files are skipped. Symlinks are not followed.
+    /// Hidden direct children of `root` are not listed, but each listed
+    /// child's size includes the hidden files inside it. Symlinks are not
+    /// followed.
     static func contents(of root: URL) async -> [Entry] {
         let fm = FileManager.default
         var isDir: ObjCBool = false
